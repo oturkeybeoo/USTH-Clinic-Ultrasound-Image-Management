@@ -1,16 +1,21 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import PatientRecord from "./PatientRecord";
-
 const data = {
-    no: "1",
-    name: "Nguyen Van A",
-    diseaes: "Disease A",
-}
+  no: "1",
+  name: "Nguyen Van A",
+  diseaes: "Disease A",
+};
 
 export class PatientList extends Component {
+  constructor(props) {
+    super(props);
 
-  
+    this.state = {
+      deletePopup: false,
+    };
+  }
+
   render() {
     return (
       <Patientcontainer>
@@ -34,10 +39,11 @@ export class PatientList extends Component {
           <div class="title-grid-item item4"></div>
         </div>
         {/* Try passing data */}
-        <PatientRecord record={data} /> 
+        <PatientRecord record={data} />
 
         {/* Try passing empty data */}
-        <PatientRecord record=""/>
+        <PatientRecord record="" />
+        
       </Patientcontainer>
     );
   }
@@ -47,14 +53,17 @@ export default PatientList;
 const Patientcontainer = styled.div`
   position: relative;
   top: 0;
-  left: 15.625rem;
-  width: calc(100vw - 25.625rem);
-  padding: 3rem 5rem;
+  left: 20%;
+  width: calc(100vw - 30%);
+  height: 100%;
+  padding: 3rem 4rem;
+  background-color: #f7f7f7;
   .header-patients-list {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     border-bottom: solid 1px black;
+    background-color: white;
     h2 {
     }
     label {
@@ -79,7 +88,8 @@ const Patientcontainer = styled.div`
   .title-grid-container {
     display: grid;
     grid-gap: 10px;
-    grid-template-columns: 8rem 10rem 10rem 24rem;
+    background-color: white;
+    grid-template-columns: 15% 15% 15% 55%;
     padding: 10px;
     border-bottom: solid 1px black;
     .title-grid-item {

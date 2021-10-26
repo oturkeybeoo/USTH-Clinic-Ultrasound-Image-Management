@@ -193,10 +193,10 @@ export default CreateNewCase;
 const CreateNewContainer = styled.div`
   position: relative;
   top: 0;
-  left: 15.625rem;
+  left: 20%;
   background-color: #f7f7f7;
-  width: calc(100vw - 15.625rem);
-  height: 100vh;
+  width: calc(100% - 20%);
+  height: 100%;
   display: flex;
   justify-content: space-evenly;
   font-size: 1rem;

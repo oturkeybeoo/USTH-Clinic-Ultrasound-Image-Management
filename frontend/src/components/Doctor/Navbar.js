@@ -77,13 +77,14 @@ export class Navbar extends Component {
 
 export default Navbar;
 const LeftNavbar = styled.div`
-  width: 15.625rem;
+  width: 20%;
   height: 100vh;
   display: flex;
   flex-direction: column;
   position: fixed;
   left: 0;
   top: 0;
+  background-color: white;
   .logo-care {
     display: flex;
     justify-content: center;
