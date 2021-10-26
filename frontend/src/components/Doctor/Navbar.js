@@ -6,6 +6,7 @@ import dashboardicon from "./images/Doctor_Dashboard.png";
 import patienticon from "./images/Doctor_Patient.png";
 import patientdropdownicon from "./images/Doctor_Patient_Dropdown.png";
 import logout from "./images/Doctor_Logout.png";
+import { Link } from "react-router-dom";
 
 export class Navbar extends Component {
   constructor(props) {
@@ -20,13 +21,12 @@ export class Navbar extends Component {
     this.setState({
       dropdown: !this.state.dropdown,
     });
-    console.log(this.state.dropdown);
   }
   render() {
     return (
       <LeftNavbar>
         <div className="logo-care">
-          <img src={medcareicon} />
+          <img src={medcareicon} alt="logo" />
         </div>
         <div className="avatar">
           <img src={avatar} alt="avatar" />
@@ -44,7 +44,8 @@ export class Navbar extends Component {
               <img src={patientdropdownicon} alt="patient icon" />
             </div>
           </div>
-          <div
+          <Link
+            to="/patient-list"
             className={
               this.state.dropdown
                 ? "patient-item-tab-show"
@@ -52,20 +53,22 @@ export class Navbar extends Component {
             }
           >
             <h2>View all patients</h2>
-          </div>
-          <div
+          </Link>
+          <Link
+            to="/create-new"
             className={
               this.state.dropdown
                 ? "patient-item-tab-show"
                 : "patient-item-tab-hidden"
             }
           >
+            {" "}
             <h2>Create new case</h2>
-          </div>
+          </Link>
         </div>
         <div className="logout">
-            <img src={logout} alt="logout"/>
-            <h2>Logout</h2>
+          <img src={logout} alt="logout" />
+          <h2>Logout</h2>
         </div>
       </LeftNavbar>
     );
@@ -78,7 +81,9 @@ const LeftNavbar = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
-  position: relative;
+  position: fixed;
+  left: 0;
+  top: 0;
   .logo-care {
     display: flex;
     justify-content: center;
@@ -149,13 +154,16 @@ const LeftNavbar = styled.div`
       display: flex;
       align-items: center;
       font-size: 0.8rem;
+      text-decoration: none;
+      color: black;
       h2 {
         margin-left: 1rem;
       }
     }
   }
-  .list-nav-tab > div:hover {
-    background-color: rgba(128, 136, 150, 0.2);
+  .list-nav-tab > div:hover,
+  .patient-item-tab-show:hover {
+    background-color: rgba(128, 136, 255, 0.2);
     cursor: pointer;
     transition: 0.3s ease-in-out;
   }
@@ -164,7 +172,7 @@ const LeftNavbar = styled.div`
     justify-content: center;
     align-items: center;
     position: absolute;
-    bottom: 0;
+    bottom: 1rem;
     width: 100%;
     font-size: 0.8rem;
     line-height: 1rem;
