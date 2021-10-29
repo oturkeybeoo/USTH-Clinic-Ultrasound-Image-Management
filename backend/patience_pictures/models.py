@@ -7,6 +7,7 @@ from patiences.models import Patience
 # Create your models here.
 class PatiencePicture(models.Model):
     id = models.AutoField(primary_key=True, unique=True)
+    picture_link = models.CharField(max_length=120, default="")
     picture_title = models.CharField(max_length=60)
     picture_description = models.CharField(max_length=120)
     disease_id = models.ForeignKey(PatienceDisease, on_delete=models.CASCADE)
