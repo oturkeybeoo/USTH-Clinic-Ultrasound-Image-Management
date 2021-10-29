@@ -5,6 +5,20 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from django.http import Http404
+import bcrypt
+import json
+
+
+{
+    "doctor_name": "Nguyen",
+    "doctor_phone": "09387189",
+    "doctor_email": "nguyen@gmail.com",
+    "password": "1",
+    "doctor_description": "description"
+}
+
+salt = b'salt'
+
 
 class DoctorList(APIView):
     def get(self, request, format=None):
@@ -44,3 +58,21 @@ class DoctorDetail(APIView):
         doctor.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
+class DoctorAuthentication(APIView):
+    def post(self, request, format=None):
+        body_unicode = request.body.decode('utf-8')
+        body = json.loads(body_unicode)
+
+        doctor_email = body["doctor_email"]
+        password = body["password"]
+
+        hashed = Doctor.objects.get(doctor_email=doctor_email)[password]
+
+        if bcrypt.checkpw(password, hashed):
+            return True
+        else:
+            return False
+        
+
+
+        

@@ -38,10 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'doctors.apps.DoctorsConfig',
-    'patience_diseases.apps.PatienceDiseasesConfig',
     'patience_pictures.apps.PatiencePicturesConfig',
     'patiences.apps.PatiencesConfig',
-    'rest_framework'
+    'rest_framework',
+    'cloudinary',
 ]
 
 MIDDLEWARE = [
@@ -128,3 +128,11 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ]
+}

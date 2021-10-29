@@ -14,6 +14,7 @@ class Patience(models.Model):
     patience_weight = models.CharField(max_length=60, default="")
     patience_height = models.CharField(max_length=60, default="")
     patience_age = models.IntegerField()
+    patience_disease = models.CharField(max_length=60, default="")
     patience_address = models.CharField(max_length=60)
     patience_phone = models.CharField(max_length=60)
     patience_email = models.EmailField()
@@ -23,4 +24,21 @@ class Patience(models.Model):
 
     def __str__(self):
         return self.patience_name
+
+    @classmethod
+    def create(cls, request):
+        patience = cls(
+            patience_name = request["patience_name"],
+            patience_gender = request["patience_gender"],
+            patience_weight = request["patience_weight"],
+            patience_height = request["patience_height"],
+            patience_age = request["patience_age"],
+            patience_disease = request["patience_disease"],
+            patience_address = request["patience_address"],
+            patience_phone = request["patience_phone"],
+            patience_email = request["patience_email"],
+            patience_insurance = request["patience_insurance"]
+        )
+        patience.save()
+        return patience
     
