@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import PatientRecord from "./PatientRecord";
-const data = {
+
+const testData = {
   no: "1",
   name: "Nguyen Van A",
   diseaes: "Disease A",
@@ -39,11 +40,11 @@ export class PatientList extends Component {
           <div class="title-grid-item item4"></div>
         </div>
         {/* Try passing data */}
-        <PatientRecord record={data} />
+        <PatientRecord record={testData} />
 
         {/* Try passing empty data */}
         <PatientRecord record="" />
-        
+
       </Patientcontainer>
     );
   }
