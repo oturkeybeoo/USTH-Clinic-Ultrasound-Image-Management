@@ -1,0 +1,114 @@
+.patient-form{
+    position: relative;
+    top: 0;
+    left: 20%;
+    background-color: #f7f7f7;
+    width: calc(100% - 20%);
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 1rem;
+}
+
+
+.personal-infomation-container {
+    margin-top: 4rem;
+}
+.personal-infomation-container h2{
+        margin: 0 0 1rem 0;
+        border-radius: 10px;
+        color: white;
+        background-color: #2bc4f3;
+        padding: 0.5rem 2rem;
+}
+
+.personal-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.personal-info label {
+    margin: 1.5rem 0 0.4rem 0;
+    font-weight: 700;
+}
+
+.personal-info input {
+    border-radius: 10px;
+    line-height: 1.7rem;
+    padding-left: 1rem;
+    background-color: #e8e8e8;
+}
+
+.diagnosis-infomation-container {
+    margin-top: 4rem;
+}
+
+.diagnosis-infomation-container h2 {
+    margin: 0 0 1rem 0;
+    border-radius: 10px;
+    color: white;
+    background-color: #64c08a;
+    padding: 0.5rem 2rem;
+}
+
+.diagnosis-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.diagnosis-info label {
+    margin: 1.5rem 0 0.4rem 0;
+    font-weight: 700;
+}
+
+.diagnosis-info input {
+    border-radius: 10px;
+    line-height: 1.7rem;
+    padding-left: 1rem;
+    background-color: #e8e8e8;
+}
+
+.diagnosis-info textarea {
+    border-radius: 10px;
+    line-height: 1.7rem;
+    padding-left: 1rem;
+    background-color: #e8e8e8;
+}
+
+.ultrasound-images-container {
+    margin-top: 4rem;
+    position: relative;
+}
+.ultrasound-images-container   h2 {
+    margin: 0 0 1rem 0;
+    border-radius: 10px;
+    color: white;
+    background-color: #ff0000;
+    padding: 0.5rem 2rem;
+}
+
+.ultrasound-image {
+    display: flex;
+    flex-direction: column;
+}
+
+.ultrasound-image input {
+    margin: 3.5rem 0 0 0;
+    border-radius: 10px;
+    padding-left: 1rem;
+}
+
+button {
+    color: white;
+    padding: 0 5rem;
+    background-color: #0f4252;
+    border-radius: 10px;
+    line-height: 2.5rem;
+    position: absolute;
+    bottom: 4rem;
+    font-size: 1.5rem;
+}
+button:hover {
+    background-color: rgba(15, 66, 82, 0.8);
+    cursor: pointer;
+}

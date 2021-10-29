@@ -1,0 +1,28 @@
+.patient-profile-container{
+    flex-grow: 1;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    padding: 20px 30px;
+    background-color: #E5E5E5;
+}
+
+.patient-info-container{
+    width: 100%;
+    display: flex;
+    flex-flow: row;
+    margin: 20px 50px;
+    margin-bottom: 40px;
+}
+
+.patient-info{
+    background-color: white;
+    padding: 10px 10px;
+}
+
+.previous-page-btn{
+    align-self: flex-start;
+    border-radius: 2px;
+    padding: 2px 15px;
+    background-color: white;
+}

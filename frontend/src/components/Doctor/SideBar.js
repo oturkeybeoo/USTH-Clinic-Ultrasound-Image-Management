@@ -7,8 +7,9 @@ import patienticon from "./images/Doctor_Patient.png";
 import patientdropdownicon from "./images/Doctor_Patient_Dropdown.png";
 import logout from "./images/Doctor_Logout.png";
 import { Link } from "react-router-dom";
+import { get_all_patients } from "../../api/patien_api";
 
-export class Navbar extends Component {
+export class SideBar extends Component {
   constructor(props) {
     super(props);
 
@@ -34,7 +35,7 @@ export class Navbar extends Component {
         </div>
         <div className="list-nav-tab">
           <div className="dashboard-tab">
-            <img src={dashboardicon} alt="dashboard icon" />
+            <img src={dashboardicon} alt="dashboard icon" onClick={get_all_patients}/>
             <h2>Dashboard</h2>
           </div>
           <div className="patient-tab">
@@ -55,7 +56,7 @@ export class Navbar extends Component {
             <h2>View all patients</h2>
           </Link>
           <Link
-            to="/create-new"
+            to="/management/create_patient"
             className={
               this.state.dropdown
                 ? "patient-item-tab-show"
@@ -66,22 +67,21 @@ export class Navbar extends Component {
             <h2>Create new case</h2>
           </Link>
         </div>
-        <div className="logout">
+        {/* <div className="logout">
           <img src={logout} alt="logout" />
           <h2>Logout</h2>
-        </div>
+        </div> */}
       </LeftNavbar>
     );
   }
 }
 
-export default Navbar;
+export default SideBar;
 const LeftNavbar = styled.div`
   width: 20%;
   height: 100vh;
   display: flex;
   flex-direction: column;
-  position: fixed;
   left: 0;
   top: 0;
   background-color: white;

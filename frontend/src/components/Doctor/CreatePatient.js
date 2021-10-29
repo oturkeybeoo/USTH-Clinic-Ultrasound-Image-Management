@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import styled from "styled-components";
+import "./css/PatientForm.css"
 
-export class CreateNewCase extends Component {
+export class CreatePatient extends Component {
   constructor(props) {
     super(props);
 
@@ -100,60 +100,25 @@ export class CreateNewCase extends Component {
   }
   render() {
     return (
-      <CreateNewContainer>
-        <div className="left-content">
+      <div>
+        <div className="personal-infomation-container">
           <h2>Personal Infomation</h2>
           <form className="personal-info">
             <label htmlFor="name">Name</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={this.state.name}
-              onChange={this.onChangeName}
-            ></input>
+            <input type="text" id="name" name="name" value={this.state.name} onChange={this.onChangeName}/>
             <label htmlFor="email">Email</label>
-            <input
-              type="text"
-              id="email"
-              name="email"
-              value={this.state.email}
-              onChange={this.onChangeEmail}
-            ></input>
+            <input type="text" id="email" name="email" value={this.state.email} onChange={this.onChangeEmail}/>
             <label htmlFor="dob">Date of Birth</label>
-            <input
-              type="date"
-              id="dob"
-              name="dob"
-              value={this.state.dob}
-              onChange={this.onChangeDob}
-            ></input>
+            <input type="date" id="dob" name="dob" value={this.state.dob} onChange={this.onChangeDob}/>
             <label htmlFor="height">Height</label>
-            <input
-              type="text"
-              id="height"
-              name="height"
-              value={this.state.height}
-              onChange={this.onChangeHeight}
-            ></input>
+            <input type="text" id="height" name="height" value={this.state.height} onChange={this.onChangeHeight}/>
             <label htmlFor="weight">Weight</label>
-            <input
-              type="text"
-              id="weight"
-              name="weight"
-              value={this.state.weight}
-              onChange={this.onChangeWeight}
-            ></input>
+            <input type="text" id="weight" name="weight" value={this.state.weight} onChange={this.onChangeWeight}/>
             <label htmlFor="healthcode">Health Insurance Code</label>
-            <input
-              type="text"
-              id="healthcode"
-              name="healthcode"
-              value={this.state.insuranceCode}
-              onChange={this.onChangeInsuranceCode}
-            ></input>
+            <input type="text" id="healthcode" name="healthcode" value={this.state.insuranceCode} onChange={this.onChangeInsuranceCode}/>
           </form>
         </div>
+
         <div className="mid-content">
           <h2>Diagnosis Infomation</h2>
           <form className="diagnosis-info">
@@ -183,109 +148,10 @@ export class CreateNewCase extends Component {
           </form>
           <button onClick={this.handleSubmit}>Confirm</button>
         </div>
-      </CreateNewContainer>
+      </div>
     );
   }
 }
 
-export default CreateNewCase;
+export default CreatePatient;
 
-const CreateNewContainer = styled.div`
-  position: relative;
-  top: 0;
-  left: 20%;
-  background-color: #f7f7f7;
-  width: calc(100% - 20%);
-  height: 100%;
-  display: flex;
-  justify-content: space-evenly;
-  font-size: 1rem;
-  .left-content {
-    margin-top: 4rem;
-    h2 {
-      margin: 0 0 1rem 0;
-      border-radius: 10px;
-      color: white;
-      background-color: #2bc4f3;
-      padding: 0.5rem 2rem;
-    }
-    .personal-info {
-      display: flex;
-      flex-direction: column;
-      label {
-        margin: 1.5rem 0 0.4rem 0;
-        font-weight: 700;
-      }
-      input {
-        border-radius: 10px;
-        line-height: 1.7rem;
-        padding-left: 1rem;
-        background-color: #e8e8e8;
-      }
-    }
-  }
-  .mid-content {
-    margin-top: 4rem;
-    h2 {
-      margin: 0 0 1rem 0;
-      border-radius: 10px;
-      color: white;
-      background-color: #64c08a;
-      padding: 0.5rem 2rem;
-    }
-    .diagnosis-info {
-      display: flex;
-      flex-direction: column;
-      label {
-        margin: 1.5rem 0 0.4rem 0;
-        font-weight: 700;
-      }
-      input {
-        border-radius: 10px;
-        line-height: 1.7rem;
-        padding-left: 1rem;
-        background-color: #e8e8e8;
-      }
-      textarea {
-        border-radius: 10px;
-        line-height: 1.7rem;
-        padding-left: 1rem;
-        background-color: #e8e8e8;
-      }
-    }
-  }
-  .right-content {
-    margin-top: 4rem;
-    position: relative;
-    h2 {
-      margin: 0 0 1rem 0;
-      border-radius: 10px;
-      color: white;
-      background-color: #ff0000;
-      padding: 0.5rem 2rem;
-    }
-    .ultrasound-image {
-      display: flex;
-      flex-direction: column;
-      input {
-        margin: 3.5rem 0 0 0;
-        border-radius: 10px;
-        padding-left: 1rem;
-      }
-    }
-    button {
-      color: white;
-      padding: 0 5rem;
-      background-color: #0f4252;
-      border-radius: 10px;
-      line-height: 2.5rem;
-      position: absolute;
-      bottom: 4rem;
-      font-size: 1.5rem;
-    }
-    button:hover {
-      background-color: rgba(15, 66, 82, 0.8);
-      cursor: pointer;
-    }
-  }
-`;

@@ -1,5 +1,4 @@
 import React from 'react';
-import '../LandingPage';
 import { Button } from './Button';
 import './HeroSection.css';
 

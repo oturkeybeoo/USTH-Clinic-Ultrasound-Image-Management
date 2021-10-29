@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import SlideShow from "./SlideShow";
+
 import deleteIcon from "./images/delete_record.png";
 export class ViewPopup extends Component {
   constructor(props) {
@@ -21,7 +21,7 @@ export class ViewPopup extends Component {
             alt="Cancel"
             onClick={this.props.onCloseViewPopup}
           />
-          <SlideShow />
+    
         </div>
       </ViewDiv>
     );
