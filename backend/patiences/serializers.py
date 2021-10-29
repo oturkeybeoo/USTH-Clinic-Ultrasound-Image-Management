@@ -11,6 +11,7 @@ class PatienceSerializer(serializers.ModelSerializer):
             'patience_weight',
             'patience_height',
             'patience_age',
+            'patience_disease',
             'patience_address',
             'patience_phone',
             'patience_email',

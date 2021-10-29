@@ -6,6 +6,26 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.http import Http404
 
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
+cloudinary.config( 
+  cloud_name = "daqpw3pug", 
+  api_key = "624768845985428", 
+  api_secret = "6Ag825vWVgRaveidqjN-ZGNVxV0" 
+)
+
+
+{
+    "picture_link": "iuansdkj",
+    "picture_title": "title",
+    "picture_description": "description",
+    "patience_id": "1",
+    "disease_id": "1",
+    "doctor_id": "1"
+}
+
 class PatiencePictureList(APIView):
     def get(self, request, format=None):
         patiencepicture = PatiencePicture.objects.all()
