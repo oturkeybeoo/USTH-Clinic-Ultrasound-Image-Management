@@ -5,8 +5,10 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from django.http import Http404
+from django.views.decorators.csrf import csrf_exempt
 
 class PatienceList(APIView):
+    @csrf_exempt
     def get(self, request, format=None):
         patience = Patience.objects.all()
         srlr = PatienceSerializer(patience, many=True)
