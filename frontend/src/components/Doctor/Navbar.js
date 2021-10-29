@@ -45,7 +45,7 @@ export class Navbar extends Component {
             </div>
           </div>
           <Link
-            to="/patient-list"
+            to="/"
             className={
               this.state.dropdown
                 ? "patient-item-tab-show"
