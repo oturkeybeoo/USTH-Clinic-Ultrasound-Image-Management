@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from .models import PatienceDisease
 
-class PatienceDiseaseSerializer(serializers.Serializer):
-    class meta:
+class PatienceDiseaseSerializer(serializers.ModelSerializer):
+    class Meta:
         model = PatienceDisease
-        field = ('id', 'disease_name')
+        fields = ('id', 'disease_name')
