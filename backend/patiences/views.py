@@ -148,7 +148,7 @@ class SendOpt(APIView):
             subject="USTH Clinic",
             message="Here is your opt: {}".format(opt),
             from_email="oturkeybeoo@gmail.com",
-            recipient_list=['oturkeybeoo@gmail.com']
+            recipient_list=[email]
         )
 
         return Response(opt, status=status.HTTP_200_OK)
