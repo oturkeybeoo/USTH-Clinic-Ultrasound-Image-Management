@@ -23,6 +23,9 @@ export class SideBar extends Component {
   }
 
   componentDidMount(){
+    if (localStorage.getItem("doctor-id") == null){
+      window.location.href = "/login"
+    }
     get_doctor(localStorage.getItem("doctor-id")).then(response => {
       this.setState({
         doctor_name: response.data.doctor_name

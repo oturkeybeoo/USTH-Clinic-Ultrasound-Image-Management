@@ -5,8 +5,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from django.http import Http404
-import bcrypt
 import json
+import bcrypt
 
 
 {
@@ -17,7 +17,7 @@ import json
     "doctor_description": "description"
 }
 
-salt = b'salt'
+salt = b'$2b$12$mOAoB.f/xzVzQtoQPNx5su'
 
 
 class DoctorList(APIView):
@@ -63,11 +63,12 @@ class DoctorCreate(APIView):
         body_unicode = request.body.decode('utf-8')
         body = json.loads(body_unicode)
 
+        # print(bcrypt.hashpw(body['password'].encode('utf-8'), salt))
         doctor_data = {
             "doctor_name": body['doctor_name'],
             "doctor_phone": body['doctor_phone'],
             "doctor_email": body['doctor_email'],
-            "password": str(hash(body['password'])),
+            "password": bcrypt.hashpw(body['password'].encode('utf-8'), salt).decode('utf-8'),
             "doctor_description": body['doctor_description']
         }
 
@@ -83,15 +84,13 @@ class DoctorLogin(APIView):
         body = json.loads(body_unicode)
         
         doctor_email = body["doctor_email"]
-        password = str(hash(body["password"]))
 
         doctor = Doctor.objects.get(doctor_email=doctor_email)
         hashed = doctor.password
-
-        if password == hashed:
+        if bcrypt.checkpw(body['password'].encode('utf-8'), hashed.encode('utf-8')):
             return Response([{"id": doctor.id}], status=status.HTTP_201_CREATED)
         else:
-            return Response(password, status=status.HTTP_400_BAD_REQUEST)
+            return Response("invalid password", status=status.HTTP_400_BAD_REQUEST)
         
 
 

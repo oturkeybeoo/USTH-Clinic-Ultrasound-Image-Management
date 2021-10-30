@@ -6,7 +6,7 @@ class Doctor(models.Model):
     doctor_name = models.CharField(max_length=60)
     doctor_phone = models.CharField(max_length=12)
     doctor_email = models.EmailField()
-    password = models.CharField(max_length=60, default="1")
+    password = models.CharField(max_length=100, default="1")
     doctor_description = models.CharField(max_length=120)
 
     def __str__(self):

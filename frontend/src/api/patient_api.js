@@ -88,7 +88,7 @@ export const check_otp = (email, otp) => {
 }
 
 export const login_doctor = (email, password) => {
-  return axios.post("http://127.0.0.1:8000/api/doctors/login",{
+  return axios.post("http://127.0.0.1:8000/api/doctors/login", {
     doctor_email: email,
     password: password
   })

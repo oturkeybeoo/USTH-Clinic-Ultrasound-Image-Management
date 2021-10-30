@@ -5,7 +5,7 @@ from . import views
 
 urlpatterns = [
     path('', views.PatienceList.as_view()),
-    path('<int:pk>', views.PatienceDetail.as_view()),
+    path('<int:pk>/', views.PatienceDetail.as_view()),
     path('create', views.CreatePatience.as_view()),
     path('send_opt', views.SendOpt.as_view()),
     path('login', views.PatienceLogin.as_view()),
