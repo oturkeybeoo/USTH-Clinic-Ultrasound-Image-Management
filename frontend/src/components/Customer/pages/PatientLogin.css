@@ -1,0 +1,26 @@
+.patient-login-container{
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    padding: 5% 25%;
+}
+
+.otp-form{
+    display: flex;
+    flex-flow: row;
+}
+
+.otp-input{
+    background-color: white;
+}
+
+.btn-submit-otp{
+    width: 80px;
+    height: 30px;
+    border-radius: 4px;
+    background-color: #2BC4F3;
+    border: none;
+    color: white;
+    margin-left: 20px;
+}

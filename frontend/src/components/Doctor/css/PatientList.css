@@ -21,18 +21,18 @@
     padding: 10px 0px;
 }
 
-label {
+.header-patients-list label {
     margin: 1.5rem 0.5rem 0.4rem 0;
     font-weight: 700;
 }
-input {
+.header-patients-list input {
     border-radius: 10px;
     line-height: 1.7rem;
     padding-left: 1rem;
     margin-right: 2rem;
     background-color: #e8e8e8;
 }
-select {
+.header-patients-list select {
     border-radius: 10px;
     line-height: 1.7rem;
     background-color: #e8e8e8;

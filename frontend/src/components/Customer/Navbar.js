@@ -39,16 +39,6 @@ function Navbar() {
                 Home
               </Link>
             </li>
-
-            <li className='nav-item'>
-              <Link
-                to='/management'
-                className='nav-links'
-                onClick={closeMobileMenu}
-              >
-                FOR DOCTOR
-              </Link>
-            </li>
           </ul>
         </div>
       </nav>

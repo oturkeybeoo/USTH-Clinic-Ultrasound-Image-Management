@@ -21,12 +21,13 @@ export default class PatientProfile extends Component{
     }
 
     handleClickBack(){
-        window.location.href = "/management"
+        window.history.back()
     }
 
     componentDidMount(){
         const patient_id = new URLSearchParams(this.props.location.search).get("id")
         get_patient(patient_id).then(response => {
+            console.log(response.data)
             this.setState({
                 patient_name: response.data.patience_name,
                 patient_age: response.data.patience_age,
@@ -34,6 +35,7 @@ export default class PatientProfile extends Component{
             })
         })
         get_images().then(response => {
+            console.log(response.data)
             let images = []
             response.data.forEach(image => {
                 if (String(image.patience_id) == patient_id) {

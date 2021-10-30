@@ -19,7 +19,7 @@ function Footer() {
           </div>
           <div class="footer-link-items">
             <h2>USEFUL LINKS</h2>
-            <Link to="/sign-up">Home</Link>
+            <Link to="/">Home</Link>
             <Link to="/">About</Link>
             <Link to="/">Contact Us</Link>
           </div>

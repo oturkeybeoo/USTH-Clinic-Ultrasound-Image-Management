@@ -70,3 +70,19 @@ export const get_patient = id => {
 export const delete_patient = id => {
   return axios.delete("http://127.0.0.1:8000/api/patiences/" + id + "/")
 }
+
+export const send_otp_via_email = email => {
+  return axios.post("http://127.0.0.1:8000/api/patiences/send_opt", 
+    {
+      patience_email: email
+    }
+  )
+}
+
+export const check_otp = (email, otp) => {
+  console.log(email, otp)
+  return axios.post("http://127.0.0.1:8000/api/patiences/login",{
+    patience_email: email,
+    password: otp
+  })
+}

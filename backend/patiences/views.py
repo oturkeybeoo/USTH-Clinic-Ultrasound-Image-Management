@@ -122,6 +122,7 @@ class CreatePatience(APIView):
 
 class PatienceLogin(APIView):
     def post(self, request, format=None):
+        print(request.data)
         body_unicode = request.body.decode('utf-8')
         body = json.loads(body_unicode)
         
@@ -138,6 +139,7 @@ class PatienceLogin(APIView):
         
 class SendOpt(APIView):
     def post(self, request, format=None):
+        print(request)
         body_unicode = request.body.decode('utf-8')
         body = json.loads(body_unicode)
 
@@ -147,7 +149,7 @@ class SendOpt(APIView):
 
         send_mail(
             subject="USTH Clinic",
-            message="Here is your opt: {}".format(opt),
+            message="This is your otp: {}".format(opt),
             from_email="oturkeybeoo@gmail.com",
             recipient_list=[email]
         )
