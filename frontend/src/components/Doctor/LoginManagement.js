@@ -19,6 +19,12 @@ export class LoginManagement extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    const loginData = {
+      doctor_email: this.state.email,
+      password: this.state.password
+    }
+    //Then post to server, using loginData .... if true redirect to doctor management page
+
   }
   render() {
     return (
