@@ -62,7 +62,7 @@ class DoctorLogin(APIView):
     def post(self, request, format=None):
         body_unicode = request.body.decode('utf-8')
         body = json.loads(body_unicode)
-
+        
         doctor_email = body["doctor_email"]
         password = body["password"]
 

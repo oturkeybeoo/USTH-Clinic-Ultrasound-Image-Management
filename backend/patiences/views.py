@@ -118,6 +118,22 @@ class CreatePatience(APIView):
             image_srlr.save()
             return Response(image_srlr.data, status=status.HTTP_201_CREATED)
         return Response(image_srlr.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class PatienceLogin(APIView):
+    def post(self, request, format=None):
+        body_unicode = request.body.decode('utf-8')
+        body = json.loads(body_unicode)
+        
+        patience_email = body["patience_email"]
+        password = body["password"]
+
+        patient = Patience.objects.get(patience_email=patience_email)
+        hashed = patient.opt
+
+        if password == hashed:
+            return Response([{"id": patient.id}], status=status.HTTP_201_CREATED)
+        else:
+            return False
         
 class SendOpt(APIView):
     def post(self, request, format=None):
@@ -128,6 +144,11 @@ class SendOpt(APIView):
 
         opt = Patience.objects.get(patience_email=email).opt
 
-        send_mail("USTH Clinic - Opt", "Here is your opt: {opt}", None, [].append(email))
+        send_mail(
+            subject="USTH Clinic",
+            message="Here is your opt: {}".format(opt),
+            from_email="oturkeybeoo@gmail.com",
+            recipient_list=['oturkeybeoo@gmail.com']
+        )
 
         return Response(opt, status=status.HTTP_200_OK)

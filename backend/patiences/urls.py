@@ -8,6 +8,7 @@ urlpatterns = [
     path('<int:pk>/', views.PatienceDetail.as_view()),
     path('create', views.CreatePatience.as_view()),
     path('send_opt', views.SendOpt.as_view()),
+    path('login', views.PatienceLogin.as_view()),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
