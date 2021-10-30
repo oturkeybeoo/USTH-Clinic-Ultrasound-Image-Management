@@ -54,10 +54,11 @@ class PatienceDetail(APIView):
     
     def put(self, request, pk, format=None):
         patience = self.get_object(pk=pk)
-        srlr = PatienceSerializer(patience, data=request.data)
+        srlr = PatienceSerializer(patience, data=request.data['data'])
         if srlr.is_valid():
             srlr.save()
             return Response(srlr.data)
+        print(srlr.errors)
         return Response(srlr.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk, format=None):

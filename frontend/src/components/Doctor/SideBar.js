@@ -2,12 +2,11 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import medcareicon from "./images/medcareicon.png";
 import avatar from "./images/avatar.png";
-import dashboardicon from "./images/Doctor_Dashboard.png";
+
 import patienticon from "./images/Doctor_Patient.png";
 import patientdropdownicon from "./images/Doctor_Patient_Dropdown.png";
-import logout from "./images/Doctor_Logout.png";
+
 import { Link } from "react-router-dom";
-import { get_all_patients } from "../../api/patient_api";
 
 export class SideBar extends Component {
   constructor(props) {
@@ -26,9 +25,11 @@ export class SideBar extends Component {
   render() {
     return (
       <LeftNavbar>
+        <Link to="/">
         <div className="logo-care">
           <img src={medcareicon} alt="logo" />
         </div>
+        </Link>
         <div className="avatar">
           <img src={avatar} alt="avatar" />
           <h2> Dr. Tran Giang Son</h2>

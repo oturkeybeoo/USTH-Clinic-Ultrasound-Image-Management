@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-import DeletePopup from "./DeletePopup";
-import EditPopup from "./EditPopup";
-import ViewPopup from "./ViewPopup";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye, faPen, faTrash } from '@fortawesome/free-solid-svg-icons'
 
+
+import { delete_patient } from "../../api/patient_api";
 import "./css/PatientRecord.css"
 
 export class PatientRecord extends Component {
@@ -18,7 +17,9 @@ export class PatientRecord extends Component {
     this.onOpenViewPopup = this.onOpenViewPopup.bind(this);
   }
   onOpenDeletePopup(e) {
-    
+    delete_patient(this.props.patient_id).then(()=>{
+      window.location.href = "/management"
+    })
   }
 
   onOpenEditPopup(e) {

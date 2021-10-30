@@ -70,10 +70,9 @@ export class EditPatient extends Component {
         this.state.images.forEach(image => {
           post_image(image.file, "Ultrasound Image", this.state.description, response.data.id, 1)
         })
+      }).then(()=>{
+        window.location.href = "/management"
       })
-
-
-    // window.location.href = "/management"
   }
   onChangeName(e) {
     this.setState({
