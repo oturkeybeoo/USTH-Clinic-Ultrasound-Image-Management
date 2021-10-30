@@ -8,6 +8,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.http import Http404
 import json
+from django.core.mail import send_mail
 
 """ Patience form
 {
@@ -116,7 +117,15 @@ class CreatePatience(APIView):
             return Response(image_srlr.data, status=status.HTTP_201_CREATED)
         return Response(image_srlr.errors, status=status.HTTP_400_BAD_REQUEST)
         
+class SendOpt(APIView):
+    def post(self, request, format=None):
+        body_unicode = request.body.decode('utf-8')
+        body = json.loads(body_unicode)
 
+        email = body["patience_email"]
 
+        opt = Patience.objects.get(patience_email=email).opt
 
-        
+        send_mail("USTH Clinic - Opt", "Here is your opt: {opt}", None, [].append(email))
+
+        return Response(opt, status=status.HTTP_200_OK)
