@@ -1,11 +1,11 @@
 import React from "react";
 import "./Footer.css";
-import { Button } from "./Button";
 import { Link } from "react-router-dom";
 import logo from "../../images/medcareicon.png";
 import phone from "../../images/phone.png";
 import mail from "../../images/mail.png";
 import location from "../../images/location.png";
+
 function Footer() {
   return (
     <div className="footer-container">

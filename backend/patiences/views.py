@@ -122,7 +122,6 @@ class CreatePatience(APIView):
 
 class PatienceLogin(APIView):
     def post(self, request, format=None):
-        print(request.data)
         body_unicode = request.body.decode('utf-8')
         body = json.loads(body_unicode)
         
