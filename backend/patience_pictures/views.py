@@ -6,9 +6,11 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.http import Http404
 
+import json
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
+from cloudinary.utils import cloudinary_url
 
 cloudinary.config( 
   cloud_name = "daqpw3pug", 
@@ -22,7 +24,6 @@ cloudinary.config(
     "picture_title": "title",
     "picture_description": "description",
     "patience_id": "1",
-    "disease_id": "1",
     "doctor_id": "1"
 }
 
@@ -33,9 +34,10 @@ class PatiencePictureList(APIView):
         return Response(srlr.data)
 
     def post(self, request, format=None):
-        srlr = PatiencePictureSerializer(data=request.data)
+        response = cloudinary.uploader.upload_image(request.data['image'])
+        srlr = PatiencePictureSerializer(data=json.loads(request.data['data']))
         if srlr.is_valid():
-            srlr.save()
+            srlr.save(picture_link=response.url)
             return Response(srlr.data, status=status.HTTP_201_CREATED)
         return Response(srlr.errors, status=status.HTTP_400_BAD_REQUEST)
 

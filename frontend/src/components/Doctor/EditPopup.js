@@ -10,11 +10,7 @@ export class EditPopup extends Component {
   render() {
     return (
       <EditDiv>
-        <div
-          className={
-            this.props.editPopup ? "edit-popup-show" : "edit-popup-hidden"
-          }
-        >
+        <div>
           <div className="left-content">
             <h2>Personal Infomation</h2>
             <form className="personal-info">

@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import styled from "styled-components";
-import editIcon from "./images/edit_record.png";
-import viewIcon from "./images/view_record.png";
-import deleteIcon from "./images/delete_record.png";
 import DeletePopup from "./DeletePopup";
 import EditPopup from "./EditPopup";
 import ViewPopup from "./ViewPopup";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEye, faPen, faTrash } from '@fortawesome/free-solid-svg-icons'
+
+import "./css/PatientRecord.css"
 
 export class PatientRecord extends Component {
   constructor(props) {
@@ -56,9 +56,7 @@ export class PatientRecord extends Component {
   }
 
   onOpenViewPopup(e) {
-    this.setState({
-      viewPopup: true,
-    });
+    window.location.href = "/management/view_patient"
   }
   onCloseViewPopup(e) {
     this.setState({
@@ -68,25 +66,25 @@ export class PatientRecord extends Component {
   render() {
     if (this.props.record !== "") {
       return (
-        <PatientGridContainer>
-          <div class="record-grid-item item1">{this.props.record.no}</div>
-          <div class="record-grid-item item2">{this.props.record.name}</div>
-          <div class="record-grid-item item3">{this.props.record.diseaes}</div>
-          <div class="record-grid-item item4">
+        <div className="patient-record-container">
+          <span className="record-order">{this.props.record.order}</span>
+          <span className="record-name">{this.props.record.name}</span>
+          <span className="record-disease">{this.props.record.disease}</span>
+          <div className="record-buttons">
             <div className="view-record" onClick={this.onOpenViewPopup}>
-              <img src={viewIcon} alt="View" />
-              <h2> View </h2>
+              <FontAwesomeIcon icon={faEye}/>
+              <span>View</span>
             </div>
             <div className="edit-record" onClick={this.onOpenEditPopup}>
-              <img src={editIcon} alt="Edit" />
-              <h2> Edit </h2>
+              <FontAwesomeIcon icon={faPen}/>
+              <span>Edit</span>
             </div>
             <div className="delete-record" onClick={this.onOpenDeletePopup}>
-              <img src={deleteIcon} alt="Delete" />
-              <h2> Delete </h2>
+            <FontAwesomeIcon icon={faTrash}/>
+              <span>Delete</span>
             </div>
           </div>
-          <DeletePopup
+          {/* <DeletePopup
             deletePopup={this.state.deletePopup}
             onCloseDeletePopup={this.onCloseDeletePopup}
             onDeleteRecord={this.onDeleteRecord}
@@ -99,8 +97,8 @@ export class PatientRecord extends Component {
           <ViewPopup
             viewPopup={this.state.viewPopup}
             onCloseViewPopup={this.onCloseViewPopup}
-          />
-        </PatientGridContainer>
+          /> */}
+        </div>
       );
     }
     return <div></div>;
@@ -109,59 +107,3 @@ export class PatientRecord extends Component {
 
 export default PatientRecord;
 
-const PatientGridContainer = styled.div`
-  display: grid;
-  grid-gap: 10px;
-  grid-template-columns: 15% 15% 15% 55%;
-  padding: 10px;
-  background-color: white;
-  .record-grid-item {
-    text-align: center;
-    font-size: 0.8rem;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .item4 {
-    grid-column: 4;
-    display: flex;
-    justify-content: center;
-    color: white;
-    .view-record {
-      background-color: #2bc4f3;
-      border-radius: 10px;
-      line-height: 0.2rem;
-      padding: 0 0.5rem;
-    }
-    .edit-record {
-      background-color: #64c08a;
-      border-radius: 10px;
-      line-height: 0.2rem;
-      padding: 0 0.5rem;
-    }
-    .delete-record {
-      background-color: #ff0000;
-      border-radius: 10px;
-      line-height: 0.2rem;
-      padding: 0 0.5rem;
-    }
-    div {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-left: 0.8rem;
-      img {
-        height: 1.5rem;
-      }
-      h2 {
-        margin-left: 0.3rem;
-      }
-    }
-    div:hover {
-      cursor: pointer;
-      opacity: 0.5;
-      transition: 0.3s ease-in-out;
-    }
-  }
-`;

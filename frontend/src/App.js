@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { Switch, Route, Router, BrowserRouter } from "react-router-dom";
-import CreateNewCase from "./components/Doctor/CreateNewCase";
-import Navbar from "./components/Doctor/Navbar";
-import PatientList from "./components/Doctor/PatientList";
+import LandingPage from "./components/Customer/LandingPage"
+import Dashboard from "./components/Doctor/Dashboard";
 
 
 export class App extends Component {
@@ -10,9 +9,8 @@ export class App extends Component {
     return (
       <BrowserRouter>
         <div className="App">
-          <Navbar />
-          <Route path="/create-new" exact component={CreateNewCase} />
-          <Route path="/" exact component={PatientList} />
+          <Route path="/" exact component={LandingPage} />
+          <Route path="/management" component={Dashboard} />
         </div>
       </BrowserRouter>
 

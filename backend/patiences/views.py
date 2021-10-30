@@ -32,10 +32,12 @@ class PatienceList(APIView):
         return Response(srlr.data)
 
     def post(self, request, format=None):
-        srlr = PatienceSerializer(data=request.data)
+        print(request.data)
+        srlr = PatienceSerializer(data=request.data["data"])
         if srlr.is_valid():
             srlr.save()
             return Response(srlr.data, status=status.HTTP_201_CREATED)
+        
         return Response(srlr.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class PatienceDetail(APIView):

@@ -1,12 +1,7 @@
 import React, { Component } from "react";
-import styled from "styled-components";
 import PatientRecord from "./PatientRecord";
-
-const testData = {
-  no: "1",
-  name: "Nguyen Van A",
-  diseaes: "Disease A",
-};
+import { get_all_patients } from "../../api/patient_api";
+import "./css/PatientList.css"
 
 export class PatientList extends Component {
   constructor(props) {
@@ -14,16 +9,25 @@ export class PatientList extends Component {
 
     this.state = {
       deletePopup: false,
+      patient_list: []
     };
+  }
+
+  componentDidMount(){
+    get_all_patients().then(response => {
+      this.setState({
+        patient_list: response.data
+      })
+    })
   }
 
   render() {
     return (
-      <Patientcontainer>
+      <div className="patient-container">
         <div className="header-patients-list">
           <h2>Patients List</h2>
-          <fomr>
-            <input type="text" placeholder="&#128269; Searching..."></input>
+          <form>
+            <input className="search-input" type="text" placeholder="Search"></input>
             <label>FILTER BY:</label>
             <select id="cars" name="cars">
               <option value="volvo">Volvo</option>
@@ -31,75 +35,29 @@ export class PatientList extends Component {
               <option value="fiat">Fiat</option>
               <option value="audi">Audi</option>
             </select>
-          </fomr>
+          </form>
         </div>
-        <div className="title-grid-container">
-          <div class="title-grid-item item1">No.</div>
-          <div class="title-grid-item item2">Name</div>
-          <div class="title-grid-item item3">Diseases</div>
-          <div class="title-grid-item item4"></div>
+        <div className="title-container">
+          <span className="title-number">ID</span>
+          <span className="title-name">Name</span>
+          <span className="title-disease">Diseases</span>
+          <span className="title-placeholder"></span>
         </div>
-        {/* Try passing data */}
-        <PatientRecord record={testData} />
+        
+        {
+          this.state.patient_list.map((patient) => {
+            return <PatientRecord record={{
+              order: patient.id,
+              name: patient.patience_name,
+              disease: patient.patience_disease
+            }} key={patient.id} />
+          })
+        }
 
-        {/* Try passing empty data */}
-        <PatientRecord record="" />
-
-      </Patientcontainer>
+      </div>
     );
   }
 }
 
 export default PatientList;
-const Patientcontainer = styled.div`
-  position: relative;
-  top: 0;
-  left: 20%;
-  width: calc(100vw - 30%);
-  height: 100%;
-  padding: 3rem 4rem;
-  background-color: #f7f7f7;
-  .header-patients-list {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    border-bottom: solid 1px black;
-    background-color: white;
-    h2 {
-    }
-    label {
-      margin: 1.5rem 0.5rem 0.4rem 0;
-      font-weight: 700;
-    }
-    input {
-      border-radius: 10px;
-      line-height: 1.7rem;
-      padding-left: 1rem;
-      margin-right: 2rem;
-      background-color: #e8e8e8;
-    }
-    select {
-      border-radius: 10px;
-      line-height: 1.7rem;
-      background-color: #e8e8e8;
-      font-size: 1.3rem;
-      padding-right: 2rem;
-    }
-  }
-  .title-grid-container {
-    display: grid;
-    grid-gap: 10px;
-    background-color: white;
-    grid-template-columns: 15% 15% 15% 55%;
-    padding: 10px;
-    border-bottom: solid 1px black;
-    .title-grid-item {
-      text-align: center;
-      font-size: 0.8rem;
-      font-weight: 700;
-    }
-    .item4 {
-      grid-column: 4;
-    }
-  }
-`;
+

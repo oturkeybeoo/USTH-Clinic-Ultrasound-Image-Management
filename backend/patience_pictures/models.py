@@ -7,7 +7,7 @@ from cloudinary.models import CloudinaryField
 # Create your models here.
 class PatiencePicture(models.Model):
     id = models.AutoField(primary_key=True, unique=True)
-    picture_link = CloudinaryField('image')
+    picture_link = models.CharField(max_length=200, blank=True)
     picture_title = models.CharField(max_length=60)
     picture_description = models.CharField(max_length=120)
     doctor_id = models.ForeignKey(Doctor, on_delete=models.CASCADE)

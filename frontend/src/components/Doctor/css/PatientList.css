@@ -1,0 +1,72 @@
+.search-input{
+    background-color: white;
+    margin-right: 50px;
+}
+
+.patient-container{
+    display: flex;
+    flex-flow: column;
+    flex-grow: 1;
+    height: 100vh;
+    padding: 3rem 4rem;
+    background-color: #f7f7f7;
+}
+
+.header-patients-list {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: solid 1px black;
+    background-color: white;
+    padding: 10px 0px;
+}
+
+label {
+    margin: 1.5rem 0.5rem 0.4rem 0;
+    font-weight: 700;
+}
+input {
+    border-radius: 10px;
+    line-height: 1.7rem;
+    padding-left: 1rem;
+    margin-right: 2rem;
+    background-color: #e8e8e8;
+}
+select {
+    border-radius: 10px;
+    line-height: 1.7rem;
+    background-color: #e8e8e8;
+    font-size: 1.3rem;
+    padding-right: 2rem;
+}
+
+.title-container {
+    display: flex;
+    flex-flow: row;
+    background-color: white;
+    padding: 10px 55px;
+    border-bottom: solid 1px black;
+}
+
+.title-container span {
+    display: inline-block;
+    text-align: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.title-number{
+    width: 10%;
+}
+
+.title-name{
+    width: 20%;
+}
+
+.title-disease{
+    width: 20%;
+}
+
+.title-placeholder{
+    width: 50%;
+}
