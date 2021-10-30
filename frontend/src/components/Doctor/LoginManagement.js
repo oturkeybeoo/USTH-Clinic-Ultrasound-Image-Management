@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+
+import { login_doctor } from "../../api/patient_api";
 import "./css/LoginManagement.css";
 export class LoginManagement extends Component {
   constructor(props) {
@@ -19,11 +21,8 @@ export class LoginManagement extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const loginData = {
-      doctor_email: this.state.email,
-      password: this.state.password
-    }
-    //Then post to server, using loginData .... if true redirect to doctor management page
+    
+    login_doctor(this.state.email, this.state.password)
 
   }
   render() {
