@@ -58,13 +58,32 @@ class DoctorDetail(APIView):
         doctor.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
+class DoctorCreate(APIView):
+    def post(self, request, format=None):
+        body_unicode = request.body.decode('utf-8')
+        body = json.loads(body_unicode)
+
+        doctor_data = {
+            "doctor_name": body['doctor_name'],
+            "doctor_phone": body['doctor_phone'],
+            "doctor_email": body['doctor_email'],
+            "password": str(hash(body['password'])),
+            "doctor_description": body['doctor_description']
+        }
+
+        srlr = DoctorSerializer(data=doctor_data)
+        if srlr.is_valid():
+            srlr.save()
+            return Response(srlr.data, status=status.HTTP_201_CREATED)
+        return Response(srlr.errors, status=status.HTTP_400_BAD_REQUEST)
+
 class DoctorLogin(APIView):
     def post(self, request, format=None):
         body_unicode = request.body.decode('utf-8')
         body = json.loads(body_unicode)
         
         doctor_email = body["doctor_email"]
-        password = body["password"]
+        password = str(hash(body["password"]))
 
         doctor = Doctor.objects.get(doctor_email=doctor_email)
         hashed = doctor.password
@@ -72,7 +91,7 @@ class DoctorLogin(APIView):
         if password == hashed:
             return Response([{"id": doctor.id}], status=status.HTTP_201_CREATED)
         else:
-            return False
+            return Response(password, status=status.HTTP_400_BAD_REQUEST)
         
 
 
