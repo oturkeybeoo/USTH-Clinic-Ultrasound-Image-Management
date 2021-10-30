@@ -1,114 +1,110 @@
 .patient-form{
-    position: relative;
-    top: 0;
-    left: 20%;
     background-color: #f7f7f7;
-    width: calc(100% - 20%);
+    width: 100%;
     height: 100%;
     display: flex;
     justify-content: space-evenly;
     font-size: 1rem;
 }
 
+.sub-form-container{
+    margin-top: 4em;
+    width: 30%;
+    display: flex;
+    flex-flow: column;
+}
 
 .personal-infomation-container {
     margin-top: 4rem;
 }
+
 .personal-infomation-container h2{
-        margin: 0 0 1rem 0;
-        border-radius: 10px;
-        color: white;
-        background-color: #2bc4f3;
-        padding: 0.5rem 2rem;
+    background-color: #2bc4f3;
+}
+.patient-form h2{
+    margin: 0 0 1rem 0;
+    border-radius: 10px;
+    color: white;
+    padding: 0.5rem 2rem;
 }
 
-.personal-info {
+.sub-form {
     display: flex;
-    flex-direction: column;
+    flex-flow: column;
+    width: 100%;
 }
 
-.personal-info label {
+.sub-form label {
     margin: 1.5rem 0 0.4rem 0;
     font-weight: 700;
 }
 
-.personal-info input {
+.sub-form input {
     border-radius: 10px;
     line-height: 1.7rem;
     padding-left: 1rem;
     background-color: #e8e8e8;
 }
 
-.diagnosis-infomation-container {
-    margin-top: 4rem;
-}
-
-.diagnosis-infomation-container h2 {
-    margin: 0 0 1rem 0;
-    border-radius: 10px;
-    color: white;
+.diagnosis-information-container h2 {
     background-color: #64c08a;
-    padding: 0.5rem 2rem;
 }
 
-.diagnosis-info {
-    display: flex;
-    flex-direction: column;
-}
-
-.diagnosis-info label {
-    margin: 1.5rem 0 0.4rem 0;
-    font-weight: 700;
-}
-
-.diagnosis-info input {
+.sub-form textarea {
     border-radius: 10px;
     line-height: 1.7rem;
     padding-left: 1rem;
     background-color: #e8e8e8;
 }
 
-.diagnosis-info textarea {
-    border-radius: 10px;
-    line-height: 1.7rem;
-    padding-left: 1rem;
-    background-color: #e8e8e8;
-}
-
-.ultrasound-images-container {
-    margin-top: 4rem;
-    position: relative;
-}
-.ultrasound-images-container   h2 {
-    margin: 0 0 1rem 0;
-    border-radius: 10px;
-    color: white;
+.ultrasound-images-container h2 {
     background-color: #ff0000;
-    padding: 0.5rem 2rem;
 }
 
-.ultrasound-image {
-    display: flex;
-    flex-direction: column;
-}
 
-.ultrasound-image input {
-    margin: 3.5rem 0 0 0;
-    border-radius: 10px;
-    padding-left: 1rem;
-}
-
-button {
+.btn-submit {
     color: white;
     padding: 0 5rem;
     background-color: #0f4252;
     border-radius: 10px;
     line-height: 2.5rem;
-    position: absolute;
-    bottom: 4rem;
     font-size: 1.5rem;
+    align-self: center;
 }
-button:hover {
+
+.btn-add-image{
+    color: white;
+    padding: 0 5rem;
+    background-color: black;
+    border-radius: 10px;
+    line-height: 2.5rem;
+    font-size: 1.5rem;
+    align-self: center;
+}
+
+.btn-submit:hover {
     background-color: rgba(15, 66, 82, 0.8);
     cursor: pointer;
+}
+
+.selected-image-container{
+    display: flex;
+    flex-flow: row wrap;
+    padding: 10px 10px;
+    width: 100%;
+}
+
+.selected-image{
+    width: 120px;
+    height: 140px;
+    object-fit: contain;
+    background-color: black;
+}
+
+.image-item{
+    width: 150px;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    margin: 10px;
 }

@@ -67,7 +67,7 @@ export class PatientRecord extends Component {
     if (this.props.record !== "") {
       return (
         <div className="patient-record-container">
-          <span className="record-order">{this.props.record.no}</span>
+          <span className="record-order">{this.props.record.order}</span>
           <span className="record-name">{this.props.record.name}</span>
           <span className="record-disease">{this.props.record.disease}</span>
           <div className="record-buttons">

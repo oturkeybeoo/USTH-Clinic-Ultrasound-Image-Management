@@ -7,9 +7,6 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from django.http import Http404
-<<<<<<< HEAD
-from django.views.decorators.csrf import csrf_exempt
-=======
 import json
 
 """ Patience form
@@ -26,20 +23,20 @@ import json
     "patience_insurance": "823798173"
 }
 """
->>>>>>> d4a75bcd07eb23ca99f2956cf7c48b828d1add3b
 
 class PatienceList(APIView):
-    @csrf_exempt
     def get(self, request, format=None):
         patience = Patience.objects.all()
         srlr = PatienceSerializer(patience, many=True)
         return Response(srlr.data)
 
     def post(self, request, format=None):
-        srlr = PatienceSerializer(data=request.data)
+        print(request.data)
+        srlr = PatienceSerializer(data=request.data["data"])
         if srlr.is_valid():
             srlr.save()
             return Response(srlr.data, status=status.HTTP_201_CREATED)
+        
         return Response(srlr.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class PatienceDetail(APIView):

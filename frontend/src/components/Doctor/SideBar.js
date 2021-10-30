@@ -7,7 +7,7 @@ import patienticon from "./images/Doctor_Patient.png";
 import patientdropdownicon from "./images/Doctor_Patient_Dropdown.png";
 import logout from "./images/Doctor_Logout.png";
 import { Link } from "react-router-dom";
-import { get_all_patients } from "../../api/patien_api";
+import { get_all_patients } from "../../api/patient_api";
 
 export class SideBar extends Component {
   constructor(props) {
@@ -46,7 +46,7 @@ export class SideBar extends Component {
             </div>
           </div>
           <Link
-            to="/"
+            to="/management"
             className={
               this.state.dropdown
                 ? "patient-item-tab-show"
@@ -56,7 +56,7 @@ export class SideBar extends Component {
             <h2>View all patients</h2>
           </Link>
           <Link
-            to="/management/create_patient"
+            to="/management/create_new"
             className={
               this.state.dropdown
                 ? "patient-item-tab-show"

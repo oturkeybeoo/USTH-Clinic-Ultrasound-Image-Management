@@ -1,13 +1,7 @@
 import React, { Component } from "react";
-import styled from "styled-components";
 import PatientRecord from "./PatientRecord";
+import { get_all_patients } from "../../api/patient_api";
 import "./css/PatientList.css"
-
-const testData = {
-  no: "1",
-  name: "Nguyen Van A",
-  disease: "Disease A",
-};
 
 export class PatientList extends Component {
   constructor(props) {
@@ -15,7 +9,16 @@ export class PatientList extends Component {
 
     this.state = {
       deletePopup: false,
+      patient_list: []
     };
+  }
+
+  componentDidMount(){
+    get_all_patients().then(response => {
+      this.setState({
+        patient_list: response.data
+      })
+    })
   }
 
   render() {
@@ -35,17 +38,21 @@ export class PatientList extends Component {
           </form>
         </div>
         <div className="title-container">
-          <span className="title-number">No.</span>
+          <span className="title-number">ID</span>
           <span className="title-name">Name</span>
           <span className="title-disease">Diseases</span>
           <span className="title-placeholder"></span>
         </div>
         
-        {/* Try passing data */}
-        <PatientRecord record={testData} />
-
-        {/* Try passing empty data */}
-        <PatientRecord record="" />
+        {
+          this.state.patient_list.map((patient) => {
+            return <PatientRecord record={{
+              order: patient.id,
+              name: patient.patience_name,
+              disease: patient.patience_disease
+            }} key={patient.id} />
+          })
+        }
 
       </div>
     );

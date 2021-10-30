@@ -1,48 +1,55 @@
 import React, { Component } from "react";
+import ImageUploading from "react-images-uploading";
+
+import { create_patient, post_image } from "../../api/patient_api";
+
 import "./css/PatientForm.css"
 
 export class CreatePatient extends Component {
+
   constructor(props) {
     super(props);
 
     this.state = {
+      images: [],
       name: "",
       email: "",
-      dob: "",
+      age: "",
       height: "",
       weight: "",
       insuranceCode: "",
       disease: "",
-      discription: "",
-      attachment: "",
+      description: "",
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.onChangeName = this.onChangeName.bind(this);
     this.onChangeEmail = this.onChangeEmail.bind(this);
-    this.onChangeDob = this.onChangeDob.bind(this);
+    this.onChangeAge = this.onChangeAge.bind(this);
     this.onChangeHeight = this.onChangeHeight.bind(this);
     this.onChangeWeight = this.onChangeWeight.bind(this);
     this.onChangeInsuranceCode = this.onChangeInsuranceCode.bind(this);
     this.onChangeDisease = this.onChangeDisease.bind(this);
-    this.onChangeDiscription = this.onChangeDiscription.bind(this);
+    this.onChangeDescription = this.onChangeDescription.bind(this);
     this.onChangeImage = this.onChangeImage.bind(this);
   }
-  handleSubmit(e) {
-    console.log(this.state);
-    //Post API
 
-    //Reset form
-    this.setState({
-      name: "",
-      email: "",
-      dob: "",
-      height: "",
-      weight: "",
-      insuranceCode: "",
-      dissease: "",
-      discription: "",
-      attachment: "",
-    });
+  handleSubmit(e) {
+    e.preventDefault()
+    create_patient(this.state.name,
+                   this.state.email,
+                   this.state.disease,
+                   this.state.weight,
+                   this.state.height,
+                   this.state.age,
+                   this.state.insuranceCode)
+    .then(response => {
+      this.state.images.forEach(image => {
+        post_image(image.file,"Ultrasound Image",this.state.description,response.data.id,1)
+      })
+    })
+
+    
+    window.location.href = "/management"
   }
   onChangeName(e) {
     this.setState({
@@ -56,10 +63,10 @@ export class CreatePatient extends Component {
       email: e.target.value,
     });
   }
-  onChangeDob(e) {
+  onChangeAge(e) {
     this.setState({
       ...this.state,
-      dob: e.target.value,
+      age: e.target.value,
     });
   }
   onChangeHeight(e) {
@@ -86,67 +93,93 @@ export class CreatePatient extends Component {
       disease: e.target.value,
     });
   }
-  onChangeDiscription(e) {
+  onChangeDescription(e) {
     this.setState({
       ...this.state,
-      discription: e.target.value,
+      description: e.target.value,
     });
   }
-  onChangeImage(e) {
+
+  onChangeImage (imageList, addUpdateIndex) {
     this.setState({
-      ...this.state,
-      attachment: e.target.value,
-    });
-  }
+      images: imageList
+    })
+  };
+
   render() {
     return (
-      <div>
-        <div className="personal-infomation-container">
+      <div className="patient-form">
+        <div className="personal-infomation-container sub-form-container">
           <h2>Personal Infomation</h2>
-          <form className="personal-info">
+          <form className="personal-info sub-form">
             <label htmlFor="name">Name</label>
-            <input type="text" id="name" name="name" value={this.state.name} onChange={this.onChangeName}/>
+            <input type="text" id="name" name="name" value={this.state.name} onChange={this.onChangeName} />
             <label htmlFor="email">Email</label>
-            <input type="text" id="email" name="email" value={this.state.email} onChange={this.onChangeEmail}/>
-            <label htmlFor="dob">Date of Birth</label>
-            <input type="date" id="dob" name="dob" value={this.state.dob} onChange={this.onChangeDob}/>
+            <input type="text" id="email" name="email" value={this.state.email} onChange={this.onChangeEmail} />
+            <label htmlFor="age">Age</label>
+            <input type="number" id="age" name="age" value={this.state.age} onChange={this.onChangeAge} />
             <label htmlFor="height">Height</label>
-            <input type="text" id="height" name="height" value={this.state.height} onChange={this.onChangeHeight}/>
+            <input type="text" id="height" name="height" value={this.state.height} onChange={this.onChangeHeight} />
             <label htmlFor="weight">Weight</label>
-            <input type="text" id="weight" name="weight" value={this.state.weight} onChange={this.onChangeWeight}/>
+            <input type="text" id="weight" name="weight" value={this.state.weight} onChange={this.onChangeWeight} />
             <label htmlFor="healthcode">Health Insurance Code</label>
-            <input type="text" id="healthcode" name="healthcode" value={this.state.insuranceCode} onChange={this.onChangeInsuranceCode}/>
+            <input type="text" id="healthcode" name="healthcode" value={this.state.insuranceCode} onChange={this.onChangeInsuranceCode} />
           </form>
         </div>
 
-        <div className="mid-content">
+        <div className="diagnosis-information-container sub-form-container">
           <h2>Diagnosis Infomation</h2>
-          <form className="diagnosis-info">
+          <form className="diagnosis-info sub-form">
             <label htmlFor="disease">Disease</label>
-            <input
-              type="text"
-              id="disease"
-              name="disease"
-              value={this.state.disease}
-              onChange={this.onChangeDisease}
-            ></input>
-            <label htmlFor="discription">Discription</label>
-            <textarea
-              id="discription"
-              name="discription"
-              rows="4"
-              cols="20"
-              value={this.state.discription}
-              onChange={this.onChangeDiscription}
-            />
+            <input type="text" id="disease" name="disease" value={this.state.disease} onChange={this.onChangeDisease} />
+            <label htmlFor="description">Description</label>
+            <textarea id="description" name="description" rows="4" cols="20" value={this.state.description} onChange={this.onChangeDescription} />
           </form>
         </div>
-        <div className="right-content">
+        <div className="ultrasound-images-container sub-form-container">
           <h2>Ultrasound images</h2>
-          <form className="ultrasound-image">
-            <input type="file" onChange={this.onChangeImage} />
-          </form>
-          <button onClick={this.handleSubmit}>Confirm</button>
+            <ImageUploading
+              multiple
+              value={this.state.images}
+              onChange={this.onChangeImage}
+              maxNumber={4}
+              dataURLKey="data_url"
+            >
+              {({
+                imageList,
+                onImageUpload,
+                onImageRemoveAll,
+                onImageUpdate,
+                onImageRemove,
+                isDragging,
+                dragProps
+              }) => (
+                <div className="upload__image-wrapper">
+                  <button
+                    className="btn-add-image"
+                    style={isDragging ? { color: "red" } : null}
+                    onClick={onImageUpload}
+                    {...dragProps}
+                  >
+                    Click or Drop here
+                  </button>
+                 
+                 <div className="selected-image-container">
+                 {imageList.map((image, index) => (
+                    <div key={index} className="image-item">
+                      <img src={image.data_url} alt="" className="selected-image" />
+                      <div className="image-item__btn-wrapper">
+                        <button onClick={() => onImageUpdate(index)}>Update</button>
+                        <button onClick={() => onImageRemove(index)}>Remove</button>
+                      </div>
+                    </div>
+                  ))}
+                 </div>
+                  
+                </div>
+              )}
+            </ImageUploading>
+            <button className="btn-submit" onClick={this.handleSubmit}>Confirm</button>
         </div>
       </div>
     );
