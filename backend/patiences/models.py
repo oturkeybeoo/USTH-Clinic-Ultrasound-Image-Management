@@ -2,7 +2,7 @@ from django.db import models
 from django.utils.crypto import get_random_string
 
 def generate_opt():
-    opt = get_random_string(length=60)
+    opt = get_random_string(length=8)
 
     return opt
 

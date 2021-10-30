@@ -64,4 +64,4 @@ class PatiencePictureDetail(APIView):
     def delete(self, request, pk, format=None):
         patiencepicture = self.get_object(pk)
         patiencepicture.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+        return Response(status=status.HTTP_204_NO_CONTENT)        

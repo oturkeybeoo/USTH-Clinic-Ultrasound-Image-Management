@@ -58,18 +58,19 @@ class DoctorDetail(APIView):
         doctor.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
-class DoctorAuthentication(APIView):
+class DoctorLogin(APIView):
     def post(self, request, format=None):
         body_unicode = request.body.decode('utf-8')
         body = json.loads(body_unicode)
-
+        
         doctor_email = body["doctor_email"]
         password = body["password"]
 
-        hashed = Doctor.objects.get(doctor_email=doctor_email)[password]
+        doctor = Doctor.objects.get(doctor_email=doctor_email)
+        hashed = doctor.password
 
-        if bcrypt.checkpw(password, hashed):
-            return True
+        if password == hashed:
+            return Response([{"id": doctor.id}], status=status.HTTP_201_CREATED)
         else:
             return False
         
