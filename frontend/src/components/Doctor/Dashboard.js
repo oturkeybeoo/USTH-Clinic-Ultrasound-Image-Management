@@ -4,7 +4,7 @@ import SideBar from "./SideBar";
 import CreatePatient from "./CreatePatient";
 import PatientList from "./PatientList";
 import PatientProfile from "./PatientProfile";
-
+import EditPatient from "./EditPatient"
 import "./css/Dashboard.css"
 
 export default function Dashboard(){
@@ -14,7 +14,8 @@ export default function Dashboard(){
             <div className="dashboard">
                 <SideBar />
                 <Switch>
-                    <Route path={`${path}/create_new`} component={CreatePatient} />
+                    <Route path={`${path}/create_patient`} component={CreatePatient} />
+                    <Route path={`${path}/edit_patient`} component={EditPatient} />
                     <Route exact path={path} component={PatientList} />
                     <Route path={`${path}/view_patient`} component={PatientProfile} />
                 </Switch>

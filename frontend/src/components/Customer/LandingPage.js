@@ -12,7 +12,7 @@ function LandingPage() {
   return (
     <>
       <Router>
-        <Header />
+        {/* <Header /> */}
         <Navbar />
         <Switch>
           <Route path='/' exact component={Home} />

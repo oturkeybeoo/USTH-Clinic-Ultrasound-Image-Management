@@ -11,58 +11,24 @@ export class PatientRecord extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      deletePopup: false,
-      editPopup: false,
-      viewPopup: false,
-    };
     this.onOpenDeletePopup = this.onOpenDeletePopup.bind(this);
-    this.onCloseDeletePopup = this.onCloseDeletePopup.bind(this);
-    this.onDeleteRecord = this.onDeleteRecord.bind(this);
 
     this.onOpenEditPopup = this.onOpenEditPopup.bind(this);
-    this.onCloseEditPopup = this.onCloseEditPopup.bind(this);
-    this.onSaveEditRecord = this.onSaveEditRecord.bind(this);
 
     this.onOpenViewPopup = this.onOpenViewPopup.bind(this);
-    this.onCloseViewPopup = this.onCloseViewPopup.bind(this);
   }
   onOpenDeletePopup(e) {
-    this.setState({
-      deletePopup: true,
-    });
-  }
-  onCloseDeletePopup(e) {
-    this.setState({
-      deletePopup: false,
-    });
-  }
-  onDeleteRecord(e) {
-    this.onCloseDeletePopup();
+    
   }
 
   onOpenEditPopup(e) {
-    this.setState({
-      editPopup: true,
-    });
-  }
-  onCloseEditPopup(e) {
-    this.setState({
-      editPopup: false,
-    });
-  }
-  onSaveEditRecord(e) {
-    this.onCloseEditPopup();
+    window.location.href = "/management/edit_patient?id=" + this.props.patient_id
   }
 
   onOpenViewPopup(e) {
-    window.location.href = "/management/view_patient"
+    window.location.href = "/management/view_patient?id=" + this.props.patient_id  
   }
-  onCloseViewPopup(e) {
-    this.setState({
-      viewPopup: false,
-    });
-  }
+ 
   render() {
     if (this.props.record !== "") {
       return (
@@ -84,20 +50,7 @@ export class PatientRecord extends Component {
               <span>Delete</span>
             </div>
           </div>
-          {/* <DeletePopup
-            deletePopup={this.state.deletePopup}
-            onCloseDeletePopup={this.onCloseDeletePopup}
-            onDeleteRecord={this.onDeleteRecord}
-          />
-          <EditPopup
-            editPopup={this.state.editPopup}
-            onCloseEditPopup={this.onCloseEditPopup}
-            onSaveEditRecord={this.onSaveEditRecord}
-          />
-          <ViewPopup
-            viewPopup={this.state.viewPopup}
-            onCloseViewPopup={this.onCloseViewPopup}
-          /> */}
+          
         </div>
       );
     }

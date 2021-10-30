@@ -62,7 +62,7 @@
     padding: 0 0.5rem;
 }
 
-.record-grid-item:hover {
+.record-buttons div:hover {
     cursor: pointer;
     opacity: 0.5;
     transition: 0.3s ease-in-out;

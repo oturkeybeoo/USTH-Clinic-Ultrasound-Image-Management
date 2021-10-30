@@ -1,7 +1,6 @@
 .image-slide-container{
     width: 60vw !important;
     height: 65vh !important;
-    background-color: blue;
 }
 
 .image-slide-item{
@@ -14,4 +13,8 @@
     max-height: 65vh;
     object-fit: cover;
     object-position: center center;
+}
+
+.previous-page-btn:hover{
+    cursor: pointer;
 }

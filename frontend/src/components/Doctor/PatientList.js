@@ -28,13 +28,6 @@ export class PatientList extends Component {
           <h2>Patients List</h2>
           <form>
             <input className="search-input" type="text" placeholder="Search"></input>
-            <label>FILTER BY:</label>
-            <select id="cars" name="cars">
-              <option value="volvo">Volvo</option>
-              <option value="saab">Saab</option>
-              <option value="fiat">Fiat</option>
-              <option value="audi">Audi</option>
-            </select>
           </form>
         </div>
         <div className="title-container">
@@ -46,7 +39,7 @@ export class PatientList extends Component {
         
         {
           this.state.patient_list.map((patient) => {
-            return <PatientRecord record={{
+            return <PatientRecord patient_id={patient.id} record={{
               order: patient.id,
               name: patient.patience_name,
               disease: patient.patience_disease

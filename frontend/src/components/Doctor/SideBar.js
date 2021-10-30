@@ -34,10 +34,6 @@ export class SideBar extends Component {
           <h2> Dr. Tran Giang Son</h2>
         </div>
         <div className="list-nav-tab">
-          <div className="dashboard-tab">
-            <img src={dashboardicon} alt="dashboard icon" onClick={get_all_patients}/>
-            <h2>Dashboard</h2>
-          </div>
           <div className="patient-tab">
             <img src={patienticon} alt="patient icon" />
             <h2>Patient</h2>
@@ -56,7 +52,7 @@ export class SideBar extends Component {
             <h2>View all patients</h2>
           </Link>
           <Link
-            to="/management/create_new"
+            to="/management/create_patient"
             className={
               this.state.dropdown
                 ? "patient-item-tab-show"
