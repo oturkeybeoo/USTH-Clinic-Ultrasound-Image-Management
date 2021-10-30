@@ -13,10 +13,10 @@
 
 .navbar-container {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  height: 80px;
-  max-width: 100vw;
+  height: 100%;
+  width: 100%;
   margin: 0;
   padding: 0;
 }
@@ -25,6 +25,8 @@
   margin: 0;
   padding: 0;
   height: 100%;
+  object-fit: cover;
+  background-color: white;
 }
 
 .fa-typo3 {

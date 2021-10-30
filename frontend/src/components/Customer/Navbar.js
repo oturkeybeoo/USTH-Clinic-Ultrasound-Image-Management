@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 
-import logo from "../../images/logo.png"
+import logo from "../../images/medcareicon.png"
 
 function Navbar() {
   const [click, setClick] = useState(false);
