@@ -8,15 +8,28 @@ import patientdropdownicon from "./images/Doctor_Patient_Dropdown.png";
 
 import { Link } from "react-router-dom";
 
+import { get_doctor } from "../../api/patient_api";
+
 export class SideBar extends Component {
+
   constructor(props) {
     super(props);
 
     this.state = {
       dropdown: false,
+      doctor_name: ""
     };
     this.handleDropdown = this.handleDropdown.bind(this);
   }
+
+  componentDidMount(){
+    get_doctor(localStorage.getItem("doctor-id")).then(response => {
+      this.setState({
+        doctor_name: response.data.doctor_name
+      })
+    })
+  }
+
   handleDropdown(e) {
     this.setState({
       dropdown: !this.state.dropdown,
@@ -32,7 +45,7 @@ export class SideBar extends Component {
         </Link>
         <div className="avatar">
           <img src={avatar} alt="avatar" />
-          <h2> Dr. Tran Giang Son</h2>
+          <h2>{this.state.doctor_name}</h2>
         </div>
         <div className="list-nav-tab">
           <div className="patient-tab">

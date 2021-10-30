@@ -4,7 +4,7 @@ import LandingPage from "./components/Customer/LandingPage"
 import PatientLogin from "./components/Customer/pages/PatientLogin";
 import Dashboard from "./components/Doctor/Dashboard";
 import LoginManagement from "./components/Doctor/LoginManagement";
-
+import PatientProfile from "./components/Doctor/PatientProfile";
 
 export class App extends Component {
   render() {
@@ -15,6 +15,7 @@ export class App extends Component {
           <Route path="/management" component={Dashboard} />
           <Route path="/login" component={LoginManagement} />
           <Route path="/patient_login" component={PatientLogin} />
+          <Route path="/view_profile" component={PatientProfile} />
         </div>
       </BrowserRouter>
     );

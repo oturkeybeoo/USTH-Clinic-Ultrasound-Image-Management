@@ -26,9 +26,6 @@ export class PatientList extends Component {
       <div className="patient-container">
         <div className="header-patients-list">
           <h2>Patients List</h2>
-          <form>
-            <input className="search-input" type="text" placeholder="Search"></input>
-          </form>
         </div>
         <div className="title-container">
           <span className="title-number">ID</span>

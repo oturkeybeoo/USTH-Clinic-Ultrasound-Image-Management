@@ -23,7 +23,7 @@ export default class PatientLogin extends React.Component {
         e.preventDefault()
         const patient_email = localStorage.getItem("patient-email")
         check_otp(patient_email, this.state.otp).then(response => {
-            window.location.href = "/management/view_patient?id="+ response.data[0].id
+            window.location.href = "/view_profile/view_patient?id="+ response.data[0].id
         })
     }
 

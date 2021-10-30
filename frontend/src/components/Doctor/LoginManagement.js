@@ -22,7 +22,10 @@ export class LoginManagement extends Component {
   handleSubmit(event) {
     event.preventDefault();
     
-    login_doctor(this.state.email, this.state.password)
+    login_doctor(this.state.email, this.state.password).then(response=>{
+        localStorage.setItem("doctor-id",response.data[0].id)
+        window.location.href = "/management"
+    })
 
   }
   render() {
